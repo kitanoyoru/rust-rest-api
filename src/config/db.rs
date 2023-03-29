@@ -22,3 +22,15 @@ pub fn migrate_and_configure_db(url: &str) -> Pool {
 
     pool
 }
+
+pub fn migrate_and_config_db(url: &str) -> Pool {
+    use crate::diesel::RunQueryDsl;
+    
+    info!("Migrating and configuring database...");
+
+    let manager = ConnectionManager::<Connection>::new(url);
+    let pool = r2d2::Pool::builder().build(manager).expect("Failed to create pool")
+
+
+}
+
